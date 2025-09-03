@@ -53,6 +53,51 @@ public class MovieServiceImpl  implements MovieService{
 		return movieRepository.findById(id);
 	}
 
+	@Override
+	public Movie updateMovie(Long id, Movie movie) {
+
+		if (id == null || id <= 0) {
+			System.out.println("Invalid ID: " + id);
+			return null; // or return a default Movie object
+		}
+
+		if (movie == null || movie.getTitle() == null || movie.getTitle().trim().isEmpty() || movie.getGenre() == null
+				|| movie.getGenre().trim().isEmpty() || movie.getReleaseYear() < 1888) {
+			System.out.println("Invalid movie details");
+			return null; // or return a default Movie object
+		}
+
+		Optional<Movie> optionalMovie = movieRepository.findById(id);
+		if (!optionalMovie.isPresent()) {
+			System.out.println("Movie not found with ID: " + id);
+			return null; // or return a default Movie object
+		}
+
+		Movie existing = optionalMovie.get();
+
+		existing.setTitle(movie.getTitle());
+		existing.setDirector(movie.getDirector());
+		existing.setReleaseYear(movie.getReleaseYear());
+		existing.setGenre(movie.getGenre());
+
+		// 5. Save and return updated entity
+		return movieRepository.save(existing);
+	}
+	
+	
+	
+	@Override
+	public void deleteMovie(Long id) {
+	    Optional<Movie> movie = getMovieById(id);
+
+	    if (movie.isPresent()) {
+	        movieRepository.delete(movie.get());
+	        System.out.println("Movie deleted successfully.");
+	    } else {
+	        System.out.println("Movie not found with ID: " + id);
+	        
+	    }
+	}
 
 	 
 }
