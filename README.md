@@ -24,7 +24,12 @@ Database	MySQL (production), H2 (tests)
 ORM	Spring Data JPA (Hibernate)
 Testing	JUnit 5, Mockito, MockMvc
 JSON	Jackson Databind
+
+
 🗂️ Project Structure
+
+
+
 src/main/java/com/sit/movies
 ├─ Controller/        --> MovieController.java
 ├─ Services/          --> MovieService.java, MovieServiceImpl.java
