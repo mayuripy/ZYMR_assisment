@@ -1,4 +1,9 @@
-Overview
+
+Movie API
+
+Movie API is a Spring Boot RESTful service for managing movies. It provides full CRUD operations, validation for duplicates, proper HTTP responses, and unit testing with an in-memory database for testing purposes.
+
+🎬 Overview
 
 The Movie API allows users to:
 
@@ -12,28 +17,32 @@ Update movie details
 
 Delete movies
 
-Includes validation for duplicate titles per release year and auto-generated IDs.
+Validation Features:
 
-Features
+Duplicate movie titles per release year are not allowed
 
-CRUD Operations for movies
+Auto-generated movie IDs
 
-Validation for duplicates & invalid inputs
+🚀 Features
 
-HTTP Status Codes for proper responses
+CRUD operations for movies
 
-Unit Testing for repository, service, and controller
+Validation for duplicate titles and invalid inputs
 
-In-memory testing database (H2)
+Proper HTTP status codes for responses
 
-Technology Stack
+Unit testing for repository, service, and controller layers
+
+In-memory H2 database for testing
+
+🏗️ Technology Stack
 Layer	Technology
 Backend	Java 17, Spring Boot 3.x
 Database	MySQL (production), H2 (tests)
 ORM	Spring Data JPA (Hibernate)
 Testing	JUnit 5, Mockito, MockMvc
 JSON	Jackson Databind
-Project Structure
+🗂️ Project Structure
 src/main/java/com/sit/movies
 ├─ Controller/      --> MovieController.java
 ├─ Services/        --> MovieService.java, MovieServiceImpl.java
@@ -48,14 +57,14 @@ src/test/java/com/sit/movies
 ├─ MovieServiceTests.java
 └─ MovieControllerTests.java
 
-Setup & Installation
+📦 Setup & Installation
 1. Clone Repository
 git clone <your-repo-url>
 cd movie-api
 
 2. Configure MySQL Database
 
-Create database movie_db
+Create a database: movie_db
 
 Update src/main/resources/application.properties:
 
@@ -70,16 +79,16 @@ mvn clean install
 mvn spring-boot:run
 
 
-Application runs at: http://localhost:8080/api/movies
+Application URL: http://localhost:8080/api/movies
 
-API Endpoints
+📡 API Endpoints
 Method	Endpoint	Description
 POST	/api/movies	Create a new movie
 GET	/api/movies	Get all movies
 GET	/api/movies/{id}	Get movie by ID
 PUT	/api/movies/{id}	Update movie by ID
 DELETE	/api/movies/{id}	Delete movie by ID
-Sample Requests & Responses
+📝 Sample Requests & Responses
 Create Movie (POST /api/movies)
 
 Request Body:
@@ -119,8 +128,8 @@ Response:
   }
 ]
 
-Testing
-1. Dependencies (pom.xml)
+🧪 Testing
+1. Test Dependencies (pom.xml)
 <dependency>
     <groupId>com.h2database</groupId>
     <artifactId>h2</artifactId>
@@ -133,7 +142,24 @@ Testing
     <scope>test</scope>
 </dependency>
 
-<dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-databind</artifactId>
-</dependency>
+2. Run Tests
+mvn test
+
+
+Tests include repository, service, and controller layers.
+
+Uses H2 in-memory database for isolated testing.
+
+📚 Contributions
+
+Contributions are welcome!
+
+Fork the repository
+
+Create your feature branch (git checkout -b feature/your-feature)
+
+Commit your changes (git commit -m 'Add feature')
+
+Push to the branch (git push origin feature/your-feature)
+
+Open a Pull Request
