@@ -5,9 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +28,7 @@ public class movieController {
 	@Autowired
 	private MovieService movieService;
 
-	@PostMapping("/PostMovie")
+	@PostMapping
 	public ResponseEntity<?> createMovie(@Validated @RequestBody Movie movie) {
 
 		if (movie.getId() != null) {
@@ -48,7 +46,7 @@ public class movieController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedMovie);
 	}
 
-	@GetMapping("/getAllMovie")
+	@GetMapping
 	public ResponseEntity<?> getAllMovies() {
 		List<Movie> movies = movieService.getAllMovies();
 

@@ -77,6 +77,7 @@ public class MovieServiceImpl implements MovieService {
 		existing.setDirector(movie.getDirector());
 		existing.setReleaseYear(movie.getReleaseYear());
 		existing.setGenre(movie.getGenre());
+		existing.setRating(movie.getRating());
 
 		return movieRepository.save(existing);
 	}

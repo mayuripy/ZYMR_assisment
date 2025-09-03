@@ -9,5 +9,5 @@ import com.sit.movies.Model.Movie;
 public interface MovieRepository  extends JpaRepository<Movie, Long>{
 
 	 boolean existsByTitleAndReleaseYear(String title, int releaseYear);
-	 
+
 }
