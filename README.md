@@ -29,7 +29,6 @@ JSON	Jackson Databind
 # Project Structure
 
 
-
 src/main/java/com/sit/movies
 ├─ Controller/        --> MovieController.java
 ├─ Services/          --> MovieService.java, MovieServiceImpl.java
@@ -43,6 +42,7 @@ src/test/java/com/sit/movies
 ├─ MovieRepositoryTests.java
 ├─ MovieServiceTests.java
 └─ MovieControllerTests.java
+
 
 # Database 
 
