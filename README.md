@@ -79,7 +79,7 @@ mvn clean install
 mvn spring-boot:run
 
 
-Application URL: http://localhost:8080/api/movies
+Application URL: http://localhost:8087/api/movies
 
 📡 API Endpoints
 Method	Endpoint	Description
