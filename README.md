@@ -1,9 +1,9 @@
 
-🎬 Movie API
+# Movie API
 
 Movie API is a Spring Boot RESTful service for managing movies. It provides full CRUD operations, validation for duplicates, proper HTTP responses, and unit testing with an in-memory database for testing purposes.
 
-🌟 Features
+# Features
 
 Full CRUD operations for movies (Create, Read, Update, Delete)
 
@@ -17,7 +17,7 @@ Unit testing for repository, service, and controller layers
 
 In-memory H2 database for testing purposes
 
-🏗️ Technology Stack
+# Technology Stack
 Layer	Technology
 Backend	Java 17, Spring Boot 3.x
 Database	MySQL (production), H2 (tests)
@@ -26,7 +26,7 @@ Testing	JUnit 5, Mockito, MockMvc
 JSON	Jackson Databind
 
 
-🗂️ Project Structure
+# Project Structure
 
 
 
@@ -44,17 +44,11 @@ src/test/java/com/sit/movies
 ├─ MovieServiceTests.java
 └─ MovieControllerTests.java
 
-📦 Setup & Installation
+# Database 
 
-Clone Repository
+  Configure MySQL Database
 
-git clone <repository-url>
-cd movie-api
-
-
-Configure MySQL Database
-
-CREATE DATABASE movie_db;
+   CREATE DATABASE movie_db;
 
 
 Update application.properties
@@ -74,14 +68,15 @@ mvn spring-boot:run
 
 Application URL: http://localhost:8087/api/movies
 
-📡 API Endpoints
+# API Endpoints
 Method	Endpoint	Description
 POST	/api/movies	Create a new movie
 GET	/api/movies	Get all movies
 GET	/api/movies/{id}	Get movie by ID
 PUT	/api/movies/{id}	Update movie by ID
 DELETE	/api/movies/{id}	Delete movie by ID
-📝 Sample Requests & Responses
+
+# Sample Requests & Responses
 Create Movie (POST /api/movies)
 
 Request Body
@@ -121,7 +116,7 @@ Response
   }
 ]
 
-🧪 Testing
+# Testing
 
 Test Dependencies (pom.xml)
 
@@ -136,6 +131,4 @@ Test Dependencies (pom.xml)
     <scope>test</scope>
 </dependency>
 
-
-mvn test
 
