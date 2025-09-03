@@ -11,14 +11,14 @@ import com.sit.movies.Repository.MovieRepository;
 import com.sit.movies.Services.MovieService;
 
 @Service
-public class MovieServiceImpl  implements MovieService{
-     
+public class MovieServiceImpl implements MovieService {
+
 	@Autowired
-	 private MovieRepository movieRepository;
-	
+	private MovieRepository movieRepository;
+
 	@Override
 	public Movie createMovie(Movie movie) {
-		
+
 		return movieRepository.save(movie);
 	}
 
@@ -27,29 +27,27 @@ public class MovieServiceImpl  implements MovieService{
 		return movieRepository.existsByTitleAndReleaseYear(title, releaseYear);
 	}
 
-	@Override 
+	@Override
 	public List<Movie> getAllMovies() {
-		
+
 		return movieRepository.findAll();
 	}
-	
 
 	@Service
 	public class MovieService {
 
-	    @Autowired
-	    private MovieRepository movieRepository;
+		@Autowired
+		private MovieRepository movieRepository;
 
-	    public Optional<Movie> getMovieById(Long id) {
-	    	
-	        return movieRepository.findById(id);
-	    }
+		public Optional<Movie> getMovieById(Long id) {
+
+			return movieRepository.findById(id);
+		}
 	}
-
 
 	@Override
 	public Optional<Movie> getMovieById(Long id) {
-		
+
 		return movieRepository.findById(id);
 	}
 
@@ -58,19 +56,19 @@ public class MovieServiceImpl  implements MovieService{
 
 		if (id == null || id <= 0) {
 			System.out.println("Invalid ID: " + id);
-			return null; // or return a default Movie object
+			return null;
 		}
 
 		if (movie == null || movie.getTitle() == null || movie.getTitle().trim().isEmpty() || movie.getGenre() == null
 				|| movie.getGenre().trim().isEmpty() || movie.getReleaseYear() < 1888) {
 			System.out.println("Invalid movie details");
-			return null; // or return a default Movie object
+			return null;
 		}
 
 		Optional<Movie> optionalMovie = movieRepository.findById(id);
 		if (!optionalMovie.isPresent()) {
 			System.out.println("Movie not found with ID: " + id);
-			return null; // or return a default Movie object
+			return null;
 		}
 
 		Movie existing = optionalMovie.get();
@@ -80,24 +78,20 @@ public class MovieServiceImpl  implements MovieService{
 		existing.setReleaseYear(movie.getReleaseYear());
 		existing.setGenre(movie.getGenre());
 
-		// 5. Save and return updated entity
 		return movieRepository.save(existing);
 	}
-	
-	
-	
+
 	@Override
 	public void deleteMovie(Long id) {
-	    Optional<Movie> movie = getMovieById(id);
+		Optional<Movie> movie = getMovieById(id);
 
-	    if (movie.isPresent()) {
-	        movieRepository.delete(movie.get());
-	        System.out.println("Movie deleted successfully.");
-	    } else {
-	        System.out.println("Movie not found with ID: " + id);
-	        
-	    }
+		if (movie.isPresent()) {
+			movieRepository.delete(movie.get());
+			System.out.println("Movie deleted successfully.");
+		} else {
+			System.out.println("Movie not found with ID: " + id);
+
+		}
 	}
 
-	 
 }
