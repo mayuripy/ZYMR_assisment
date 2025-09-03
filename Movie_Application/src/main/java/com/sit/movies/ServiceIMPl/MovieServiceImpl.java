@@ -1,6 +1,7 @@
 package com.sit.movies.ServiceIMPl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,27 @@ public class MovieServiceImpl  implements MovieService{
 		
 		return movieRepository.findAll();
 	}
+	
+
+	@Service
+	public class MovieService {
+
+	    @Autowired
+	    private MovieRepository movieRepository;
+
+	    public Optional<Movie> getMovieById(Long id) {
+	    	
+	        return movieRepository.findById(id);
+	    }
+	}
+
+
+	@Override
+	public Optional<Movie> getMovieById(Long id) {
+		
+		return movieRepository.findById(id);
+	}
+
 
 	 
 }

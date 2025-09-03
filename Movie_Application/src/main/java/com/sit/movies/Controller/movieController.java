@@ -1,6 +1,7 @@
 package com.sit.movies.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,16 +49,19 @@ public class movieController {
 		
 		@GetMapping("/getAllMovie")
 		public ResponseEntity<?> getAllMovies() {
-		    List<Movie> movies = movieService.getAllMovies();
+			List<Movie> movies = movieService.getAllMovies();
 
-		   
-		    if (movies == null || movies.isEmpty()) {
-		        return ResponseEntity.status(HttpStatus.NO_CONTENT)
-		                .body("No movies found in the database");
-		    }
+			if (movies == null || movies.isEmpty()) {
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No movies found in the database");
+			}
 
-		    return ResponseEntity.ok(movies);
+			return ResponseEntity.ok(movies);
 		}
-
 		
+		 @GetMapping("/{id}")
+		    public ResponseEntity<Optional<Movie>> getMovieById(@PathVariable Long id) {
+		        return ResponseEntity.ok(movieService.getMovieById(id));
+		    }
+		
+				
 }
