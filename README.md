@@ -26,24 +26,6 @@ Testing	JUnit 5, Mockito, MockMvc
 JSON	Jackson Databind
 
 
-# Project Structure
-
-
-src/main/java/com/sit/movies
-├─ Controller/        --> MovieController.java
-├─ Services/          --> MovieService.java, MovieServiceImpl.java
-├─ Model/             --> Movie.java
-├─ Repository/        --> MovieRepository.java
-├─ MovieApplication.java
-└─ resources/
-   └─ application.properties (MySQL config)
-
-src/test/java/com/sit/movies
-├─ MovieRepositoryTests.java
-├─ MovieServiceTests.java
-└─ MovieControllerTests.java
-
-
 # Database 
 
   Configure MySQL Database
